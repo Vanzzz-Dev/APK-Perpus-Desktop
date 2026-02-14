@@ -641,6 +641,7 @@ if (currentPage > 1) {
         if(btnAdd.getText().equals("TAMBAH")){
             btnAdd.setText("UBAH");
         }
+        
         btnPrint.setVisible(true);
         btnDelete.setVisible(true);
         btnCancel.setVisible(true);

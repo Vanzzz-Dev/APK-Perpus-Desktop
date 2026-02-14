@@ -81,7 +81,7 @@ DefaultTableModel model;
         txtPengarang.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Pengarang");
         txtPenerbit.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Penerbit");
         txtDenda.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Jumlah");
-        
+        txtNama.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Nama");
       }
     
     void hitungTotalData() {
@@ -251,6 +251,8 @@ ps.setInt(2, offset);
         txtID = new javax.swing.JTextField();
         txtTanggalAktual = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        cmbjenisDenda = new javax.swing.JComboBox<>();
         txtidPinjam = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -529,20 +531,31 @@ ps.setInt(2, offset);
         jLabel4.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
         jLabel4.setText("Tanggal ");
 
+        jLabel5.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        jLabel5.setText("Jenis Denda");
+
+        cmbjenisDenda.setFont(new java.awt.Font("Bahnschrift", 0, 12)); // NOI18N
+        cmbjenisDenda.setForeground(new java.awt.Color(204, 204, 204));
+        cmbjenisDenda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Denda", "Telat", "Buku Hilang", "Buku Rusak" }));
+
         javax.swing.GroupLayout panelCustom1Layout = new javax.swing.GroupLayout(panelCustom1);
         panelCustom1.setLayout(panelCustom1Layout);
         panelCustom1Layout.setHorizontalGroup(
             panelCustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelCustom1Layout.createSequentialGroup()
-                .addGap(178, 178, 178)
+                .addGap(72, 72, 72)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTanggalAktual, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(196, 196, 196))
+                .addGap(70, 70, 70)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbjenisDenda, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49))
         );
         panelCustom1Layout.setVerticalGroup(
             panelCustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -554,7 +567,9 @@ ps.setInt(2, offset);
                         .addComponent(jLabel3))
                     .addGroup(panelCustom1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtTanggalAktual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4)
+                        .addComponent(jLabel5)
+                        .addComponent(cmbjenisDenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(20, 20, 20))
         );
 
@@ -675,19 +690,20 @@ ps.setInt(2, offset);
                                     .addComponent(txtidBuku, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panelAddLayout.createSequentialGroup()
                                 .addGap(63, 63, 63)
-                                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(panelAddLayout.createSequentialGroup()
+                                            .addComponent(jLabel17)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(txtPenerbit, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(panelAddLayout.createSequentialGroup()
+                                            .addComponent(jLabel12)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                                            .addComponent(txtPengarang, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(panelAddLayout.createSequentialGroup()
-                                        .addComponent(jLabel17)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtPenerbit, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelAddLayout.createSequentialGroup()
                                         .addComponent(jLabel22)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(panelAddLayout.createSequentialGroup()
-                                        .addComponent(jLabel12)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtPengarang, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtKembali, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addGap(97, 97, 97))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelAddLayout.createSequentialGroup()
                         .addComponent(jLabel18)
@@ -739,11 +755,11 @@ ps.setInt(2, offset);
                                     .addComponent(jLabel9)
                                     .addComponent(txtAnggota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(panelAddLayout.createSequentialGroup()
-                                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel10)
+                                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(txtidBuku, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel11)
                                     .addComponent(txtJudul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -755,24 +771,19 @@ ps.setInt(2, offset);
                                     .addComponent(jLabel17)
                                     .addComponent(txtPenerbit, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(lbGambar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelAddLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel19))
-                        .addGap(14, 14, 14)
-                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtDenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18))
-                        .addGap(5, 5, 5)
-                        .addComponent(lbInfoDenda))
-                    .addGroup(panelAddLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel22)
-                            .addComponent(txtKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(190, Short.MAX_VALUE))
+                    .addComponent(txtNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addGap(14, 14, 14)
+                .addGroup(panelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel18)
+                    .addComponent(txtKembali, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel22))
+                .addGap(5, 5, 5)
+                .addComponent(lbInfoDenda)
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         panelMain.add(panelAdd, "card2");
@@ -844,6 +855,14 @@ if (currentPage > 1) {
 if (txtDenda.getText().trim().isEmpty()) {
     txtDenda.setText("0");
 }
+
+String jumlahKembali = txtKembali.getText();
+
+if(jumlahKembali.isEmpty()){
+ JOptionPane.showMessageDialog(this, "Isi Jumlah","Pesan",JOptionPane.WARNING_MESSAGE);
+ return;
+}
+
 if (insertData()) {            
         insertDataDetail();        
         updateStatus();
@@ -853,8 +872,18 @@ if (insertData()) {
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void btnsetPeminjamanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsetPeminjamanActionPerformed
+    if (cmbjenisDenda.getSelectedIndex() == 0) {
+        JOptionPane.showMessageDialog(this,
+                "Pilih Jenis Denda terlebih dahulu!",
+                "Peringatan",
+                JOptionPane.WARNING_MESSAGE);
+        return; 
+    }else{
      getpeminjaman();
      hitungDenda();
+    }
+        
+       
     }//GEN-LAST:event_btnsetPeminjamanActionPerformed
 
     private void txtDendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDendaActionPerformed
@@ -881,6 +910,7 @@ if (insertData()) {
     private templet.IconButtonCustom btnSave;
     private javax.swing.JButton btnsetPeminjaman;
     private javax.swing.JComboBox<Integer> cbPage;
+    private javax.swing.JComboBox<String> cmbjenisDenda;
     private com.raven.datechooser.DateChooser dateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -899,6 +929,7 @@ if (insertData()) {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -963,6 +994,7 @@ private boolean insertData() {
     String idPengembalian = txtID.getText();
     String tanggal = txtTanggalAktual.getText();
     String idPeminjaman = txtidPinjam.getText();
+    
 
     try {
         String sql = "INSERT INTO pengembalian (ID_Pengembalian, Tanggal_Dikembalikan, ID_Peminjaman, ID_User) VALUES (?,?,?,?)";
@@ -983,16 +1015,16 @@ private boolean insertData() {
 
     
  private void insertDataDetail() {
-
     String idPengembalian = txtID.getText();
     String idBuku = txtidBuku.getText();
     String jumlahKembali = txtKembali.getText();
-
+    
+    
     double jumlahDenda = 0.0;
     if (!txtDenda.getText().trim().isEmpty()) {
         jumlahDenda = Double.parseDouble(txtDenda.getText().trim());
     }
-
+    
     try {
         String sql = "INSERT INTO detail_pengembalian (ID_Pengembalian, ID_Buku, Jumlah_Kembali, Jumlah_Denda) VALUES (?,?,?,?)";
         PreparedStatement st = conn.prepareStatement(sql);
@@ -1132,36 +1164,45 @@ private void getpeminjaman() {
 }
 
 private void hitungDenda() {
+    
+    String cekDenda = cmbjenisDenda.getSelectedItem().toString();
 
-    int dendaPerHari = 500;
+    if ("Buku Rusak".equals(cekDenda)) {
+        txtDenda.setText("10000");
+        lbInfoDenda.setVisible(true);
+        lbInfoDenda.setText("Denda Buku Rusak");
+        return; 
+    }
+
+    if ("Buku Hilang".equals(cekDenda)) {
+        lbInfoDenda.setVisible(true);
+        lbInfoDenda.setText("Denda Buku Hilang");
+        return; 
+    }
+
 
     String tanggalAktualStr = txtTanggalAktual.getText().trim();
     String tanggalKembaliStr = txtTanggalKembali.getText().trim();
-
-    if (tanggalAktualStr.isEmpty() || tanggalKembaliStr.isEmpty()) {
-        txtDenda.setText("0");
-        lbInfoDenda.setVisible(false);
-        return;
-    }
-
+    
     try {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         Date tanggalAktual = dateFormat.parse(tanggalAktualStr);
         Date tanggalKembali = dateFormat.parse(tanggalKembaliStr);
 
-        long selisihHari = (tanggalAktual.getTime() - tanggalKembali.getTime()) / (24 * 60 * 60 * 1000);
+        long selisihHari =
+                (tanggalAktual.getTime() - tanggalKembali.getTime())
+                / (24 * 60 * 60 * 1000);
 
         if (selisihHari > 0) {
+            int dendaPerHari = 500; 
             int denda = (int) (selisihHari * dendaPerHari);
-            txtDenda.setText(String.valueOf(denda));
 
+            txtDenda.setText(String.valueOf(denda));
             lbInfoDenda.setVisible(true);
             lbInfoDenda.setText("Telat : " + selisihHari + " hari");
-
         } else {
             txtDenda.setText("0");
-
             lbInfoDenda.setVisible(true);
             lbInfoDenda.setText("Tidak Ada Denda");
         }
@@ -1171,7 +1212,6 @@ private void hitungDenda() {
     }
 }
 
-  
-  
+
 }
     

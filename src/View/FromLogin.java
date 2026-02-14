@@ -10,7 +10,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
 import main.MenuUtama;
-import main.MenuUtama;
 
 public class FromLogin extends javax.swing.JFrame {
 Connection conn;
@@ -41,6 +40,7 @@ int xx, xy;
         txtUser = new templet.TextfieldCustom1();
         txtPass = new templet.PasswordFieldCustom();
         off = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -121,6 +121,16 @@ int xx, xy;
         off.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/eyes_slash.png"))); // NOI18N
         jPanel1.add(off, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, 40));
 
+        jLabel6.setFont(new java.awt.Font("Bahnschrift", 0, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel6.setText("Register");
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 420, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -173,6 +183,13 @@ int xx, xy;
          System.exit(0);
     }//GEN-LAST:event_jLabel5MouseClicked
 
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+    FormRegister mn = new FormRegister();
+            mn.setVisible(true);
+            mn.revalidate();   
+            this.dispose();
+    }//GEN-LAST:event_jLabel6MouseClicked
+
     
     public static void main(String args[]) {
        FlatLightLaf.setup();
@@ -186,6 +203,7 @@ int xx, xy;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel off;
     private javax.swing.JLabel on;

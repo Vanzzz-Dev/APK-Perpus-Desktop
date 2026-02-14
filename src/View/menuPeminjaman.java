@@ -12,10 +12,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
 
 
 
@@ -55,7 +59,7 @@ DefaultTableModel model;
     loadDataSementara();
     setModelTableDetail();
     txtcari.setPlaceholder("Serch");
-    
+     btnPrint.setVisible(false);
     txtJumlah.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -307,6 +311,7 @@ ps.setInt(2, offset);
         TableDetail = new templet.TableCustom();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
+        btnPrint = new templet.IconButtonCustom();
         panelAdd = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
@@ -456,6 +461,7 @@ ps.setInt(2, offset);
 
         TableDetail.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {},
                 {}
             },
             new String [] {
@@ -473,9 +479,18 @@ ps.setInt(2, offset);
         jLabel20.setBackground(new java.awt.Color(102, 102, 102));
         jLabel20.setFont(new java.awt.Font("Bahnschrift", 1, 18)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel20.setText("Detail Peminjaman Buku Perpustakaan");
+        jLabel20.setText("Detail Peminjaman Buku ");
 
         jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/book_icon.png"))); // NOI18N
+
+        btnPrint.setBackground(new java.awt.Color(0, 204, 204));
+        btnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Print.png"))); // NOI18N
+        btnPrint.setText("PRINT");
+        btnPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelViewLayout = new javax.swing.GroupLayout(panelView);
         panelView.setLayout(panelViewLayout);
@@ -490,7 +505,7 @@ ps.setInt(2, offset);
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelViewLayout.createSequentialGroup()
                                 .addComponent(jLabel21)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jLabel20))))
                     .addGroup(panelViewLayout.createSequentialGroup()
                         .addContainerGap(27, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 792, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -506,12 +521,14 @@ ps.setInt(2, offset);
                             .addGroup(panelViewLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
                                 .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(24, 24, 24)))))
                 .addContainerGap(27, Short.MAX_VALUE))
             .addGroup(panelViewLayout.createSequentialGroup()
-                .addGap(217, 217, 217)
+                .addGap(233, 233, 233)
                 .addComponent(btnFirst)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -538,23 +555,24 @@ ps.setInt(2, offset);
                         .addGap(15, 15, 15)
                         .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtcari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPrint, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnFirst)
                     .addComponent(btnPrev)
                     .addComponent(btnLast)
                     .addComponent(btnNext)
                     .addComponent(cbPage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(panelViewLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         panelMain.add(panelView, "card2");
@@ -963,6 +981,7 @@ if (currentPage > 1) {
         
         String id = jTable1.getValueAt(row, 0).toString();
         loadTableDetail((DefaultTableModel) TableDetail.getModel(), id);
+         btnPrint.setVisible(true);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void txtcariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcariActionPerformed
@@ -983,6 +1002,7 @@ if (currentPage > 1) {
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         showPanel();
         loadTable();
+        deleteDataSementara();
     }//GEN-LAST:event_btnBatalActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
@@ -1043,6 +1063,10 @@ if (currentPage > 1) {
         // TODO add your handling code here:
     }//GEN-LAST:event_TableDetailMouseClicked
 
+    private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
+        cetakLaporan();
+    }//GEN-LAST:event_btnPrintActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private templet.TableCustom TableDetail;
@@ -1055,6 +1079,7 @@ if (currentPage > 1) {
     private javax.swing.JButton btnLast;
     private javax.swing.JButton btnNext;
     private javax.swing.JButton btnPrev;
+    private templet.IconButtonCustom btnPrint;
     private templet.IconButtonCustom btnSave;
     private templet.IconButtonCustom btnUbah;
     private javax.swing.JButton btnsetAnggota;
@@ -1482,5 +1507,47 @@ if (currentPage > 1) {
          JOptionPane.showMessageDialog(null, "Tanggal Kembali sama dengan Tanggal Pinjam", "Pesan", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+     private void cetakLaporan() {
+         
+    try {
+        if (jTable1.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(this,
+                "Tidak ada data untuk dicetak",
+                "Informasi",
+                JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        int row = jTable1.getSelectedRow();
+        String id = jTable1.getValueAt(row, 0).toString();
+        
+      
+        HashMap<String, Object> parameters = new HashMap<>();
+        parameters.put("IDPinjam", id);
+
+        String reportPath = "D:/NetBeansProjects/ApkPerpus/src/Repost/DetailPinjam.jasper";
+
+        JasperPrint print =
+            JasperFillManager.fillReport(reportPath, parameters, conn);
+
+        if (print.getPages().isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                "Tidak ada data untuk periode tersebut",
+                "Informasi",
+                JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        JasperViewer viewer = new JasperViewer(print, false);
+        viewer.setExtendedState(JasperViewer.MAXIMIZED_BOTH);
+        viewer.setVisible(true);
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this,
+            "Gagal mencetak laporan:\n" + e.getMessage(),
+            "Error",
+            JOptionPane.ERROR_MESSAGE);
+    }
+}
 }
     
